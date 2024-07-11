@@ -1,7 +1,11 @@
+#!/usr/bin/python3
+"""Script that returns information about his/her TODO list progress"""
 import requests
 from sys import argv
 
+
 def get_employee_todo_progress(employee_id):
+    """Defines the Script"""
     # Construct the URL using the employee ID
     url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)
     
@@ -25,6 +29,7 @@ def get_employee_todo_progress(employee_id):
                 print("\t{}".format(todo['title']))
     else:
         print("Failed to retrieve data")
+
 
 if __name__ == "__main__":
     if len(argv) != 2:
