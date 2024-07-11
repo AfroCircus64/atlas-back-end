@@ -8,8 +8,7 @@ def get_employee_todo_progress(employee_id):
     """Defines the Script"""
     # Construct the URL using the employee ID
     base_url = "https://jsonplaceholder.typicode.com"
-    url = "{}/todos?userId={}".format(base_url, employee_id)
-    employee_url = "{}/users/z{}".format(base_url, employee_id)
+    employee_url = "{}/users/{}".format(base_url, employee_id)
 
     # Extracting employee name
     employee_data = requests.get(employee_url).json()
