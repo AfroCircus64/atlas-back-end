@@ -7,8 +7,9 @@ from sys import argv
 def get_employee_todo_progress(employee_id):
     """Defines the Script"""
     # Construct the URL using the employee ID
-    base_url = "https://jsonplaceholder.typicode.com/todos"
-    url = "{}?userId={}".format(base_url, employee_id)
+    base_url = "https://jsonplaceholder.typicode.com"
+    url = "{}/todos?userId={}".format(base_url, employee_id)
+    employee_url = "{}/users/z{}".format(base_url, employee_id)
 
     # Make the GET request
     response = requests.get(url)
@@ -19,8 +20,9 @@ def get_employee_todo_progress(employee_id):
         total_tasks = len(todos)
         done_tasks = sum(1 for todo in todos if todo['completed'])
 
-        # Extracting employee name from the first todo item
-        employee_name = todos[0]['userId']
+        # Extracting employee name
+        employee_data = requests.get(employee_url).json()
+        employee_name = employee_data['name']
 
         print("Employee {} is done with tasks({}/{}):".format(
             employee_name, done_tasks, total_tasks))
