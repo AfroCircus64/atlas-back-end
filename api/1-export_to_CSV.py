@@ -4,12 +4,13 @@ import csv
 import requests
 from sys import argv
 
+
 def get_employee_todo_progress(employee_id):
     """Fetches the employee's todo list progress"""
     base_url = "https://jsonplaceholder.typicode.com"
     employee_url = "{}/users/{}".format(base_url, employee_id)
     employee_data = requests.get(employee_url).json()
-    username = employee_data.get('name')
+    username = employee_data.get('username')
 
     todos_response = requests.get(
         "{}/todos".format(base_url), params={'userId': employee_id}
