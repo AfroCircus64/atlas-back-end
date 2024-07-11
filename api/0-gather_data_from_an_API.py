@@ -22,7 +22,7 @@ def get_employee_todo_progress(employee_id):
 
         # Extracting employee name
         employee_data = requests.get(employee_url).json()
-        employee_name = employee_data['name']
+        employee_name = employee_data.get('name')
 
         print("Employee {} is done with tasks({}/{}):".format(
             employee_name, done_tasks, total_tasks))
