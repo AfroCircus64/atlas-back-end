@@ -7,22 +7,24 @@ from sys import argv
 def get_employee_todo_progress(employee_id):
     """Defines the Script"""
     # Construct the URL using the employee ID
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)
-    
+    base_url = "https://jsonplaceholder.typicode.com/todos"
+    url = "{}?userId={}".format(base_url, employee_id)
+
     # Make the GET request
     response = requests.get(url)
-    
+
     # Check if the request was successful
     if response.status_code == 200:
         todos = response.json()
         total_tasks = len(todos)
         done_tasks = sum(1 for todo in todos if todo['completed'])
-        
+
         # Extracting employee name from the first todo item
         employee_name = todos[0]['userId']
-        
-        print("Employee {} is done with tasks({}/{}):".format(employee_name, done_tasks, total_tasks))
-        
+
+        print("Employee {} is done with tasks({}/{}):".format(
+            employee_name, done_tasks, total_tasks))
+
         # Printing each completed task title
         for todo in todos:
             if todo['completed']:
