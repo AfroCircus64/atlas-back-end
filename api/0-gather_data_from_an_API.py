@@ -11,11 +11,9 @@ def get_employee_todo_progress(employee_id):
     url = "{}/todos?userId={}".format(base_url, employee_id)
     employee_url = "{}/users/z{}".format(base_url, employee_id)
 
-
     # Extracting employee name
     employee_data = requests.get(employee_url).json()
     employee_name = employee_data.get('name')
-
 
     todos_response = requests.get(
         "{}/todos".format(base_url), params={'userId': employee_id}
