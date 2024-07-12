@@ -21,7 +21,7 @@ def get_employee_todo_progress(employee_id):
             "task": todo['title'],
             "completed": todo['completed'],
             "username": username
-    } for todo in todos_data]
+            } for todo in todos_data]
 
     format = {str(employee_id): data}
 
