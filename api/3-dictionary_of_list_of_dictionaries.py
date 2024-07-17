@@ -42,5 +42,6 @@ def export_to_json():
     with open('todo_all_employees.json', 'w') as file:
         json.dump(all_employees_data, file)
 
+
 if __name__ == "__main__":
     export_to_json()
